@@ -8,18 +8,28 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-">
+<body class="bg-slate-800 text-white">
     <div class="w-6/12 h-3/12 text-center mx-auto">
         <header>
-            <h1 class="text-4xl">Polynomial Calculator</h1>
+            <h1 class="text-4xl pb-8">Polynomial Calculator</h1>
             <h2 class="text-3xl underline underline-offset-4">Polynomial Degree ?</h2>
-            <h2 class="text-3xl">Select 2-4 :</h2>
+            <h2 class="text- pb-6">Select 2-4 :</h2>
         </header>
-        <ul class="flex place-content-center text-3xl gap-8">
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
+   
+    <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
+        <ul class="flex flex-wrap -mb-px justify-center">
+            <li class="mr-2">
+                <a href="#" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">2nd Degree</a>
+            </li>
+            <li class="mr-2">
+                <a href="#" class="inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500" aria-current="page">3rd Degree</a>
+            </li>
+            <li class="mr-2">
+                <a href="#" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">4th Degree</a>
+            </li>
         </ul>
+    </div>
+
     </div>
 
 </body>
