@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-800 text-white">
+<<<<<<< HEAD
     <div class="w-6/12 h-3/12 text-center mx-auto">
         <header>
             <h1 class="text-4xl pb-8">Polynomial Calculator</h1>
@@ -26,10 +27,60 @@
             </li>
             <li class="mr-2">
                 <a href="#" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">4th Degree</a>
+=======
+
+    <div class="h-3/12 flex flex-col justify-center align-middle place-content-center">
+        <header class="text-center">
+            <h1 class="text-4xl pb-8">Polynomial Calculator</h1>
+            <h2 class="text-3xl">Polynomial Degree ?</h2>
+            <h2 class="text-2xl pb-6">Select 2-4 :</h2>
+        </header>
+   
+    <div class="w-4/12 mx-auto font-medium text-center text-gray-500 dark:text-gray-400">
+        <ul class="flex flex-row flex-wrap justify-center border-b border-gray-200 dark:border-gray-700">
+            <li class="mr-2 polynomialDegrees">
+                <a href="#" id="2ndDegree" class="resetData inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 focus:text-blue-600 focus:border-blue-600 active focus:dark:text-blue-500 focus:dark:border-blue-500">2nd Degree</a>
+            </li>
+            <li class="mr-2 polynomialDegrees">
+                <a href="#" id="3rdDegree" class="resetData inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 focus:text-blue-600 focus:border-blue-600 active focus:dark:text-blue-500 focus:dark:border-blue-500" aria-current="page">3rd Degree</a>
+            </li>
+            <li class="mr-2 polynomialDegrees">
+                <a href="#" id="4thDegree" class="resetData inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 focus:text-blue-600 focus:border-blue-600 active focus:dark:text-blue-500 focus:dark:border-blue-500">4th Degree</a>
+>>>>>>> changes
             </li>
         </ul>
     </div>
 
+<<<<<<< HEAD
+=======
+    <div class="text-center text-xl">
+        <p class="py-4 hidden" id="quadratic"><span>a</span>x<sup>2</sup> + <span>b</span>x + <span>c</span></p>
+        <p class="py-4 hidden" id="cubic"><span>a</span>x<sup>3</sup> + <span>b</span>x<sup>2</sup> + <span>c</span>x + <span>d</span></p>
+        <p class="py-4 hidden" id="quartic"><span>a</span>x<sup>4</sup> + <span>b</span>x<sup>3</sup> + <span>c</span><sup>2</sup> + <span>d</span> + <span>e</span></p>
+    </div>
+   
+    <form class="w-6/12 mx-auto flex flex-col justify-center items-center gap-3 py-7 hidden" id="quadraticForm" class="mt-10 text-center" action="">
+        <label class="text-lg" for="">Input <span>a</span> :</label> 
+        <input id="quadraticInput" class="w-60 form-control text-black p-0.5 outline-none rounded-sm appearance-none" type="number">
+    </form>
+
+    <form class="w-6/12 mx-auto flex flex-col justify-center items-center gap-3 py-7 hidden" id="cubicForm" class="mt-10 text-center" action="">
+        <label class="text-lg" for="">Input <span>b</span> :</label> 
+        <input id="cubicInput" class="w-60 form-control text-black p-0.5 outline-none rounded-sm appearance-none" type="number">
+    </form>
+
+    <form class="w-6/12 mx-auto flex flex-col justify-center items-center gap-3 py-7 hidden" id="quarticForm" class="mt-10 text-center" action="">
+        <label class="text-lg" for="">Input <span>c</span> :</label> 
+        <input id="quarticInput" class="w-60 form-control text-black p-0.5 outline-none rounded-sm appearance-none" type="number">
+    </form>
+       
+    
+    </div>
+
+    <div class="w-6/12 mx-auto py-4 text-center hidden">
+        <h2>Output :</h2>
+        <p id="outputSum">output sum goes here</p>
+>>>>>>> changes
     </div>
 
 </body>
