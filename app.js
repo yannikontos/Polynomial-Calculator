@@ -108,7 +108,6 @@ function calculateLinear(){
     const num1 = inputs[0];
     const num2 = inputs[1];
 
-
     const root = -num2 / num1;
     outputSum.textContent = `x1 = ${root}`;
 };
