@@ -3,16 +3,16 @@ const polynomialDegrees = document.querySelectorAll('.polynomialDegrees');
 const polynomialContainer = document.getElementById('polynomialContainer');
 const secondDegree = document.getElementById("2ndDegree");
 const thirdDegree = document.getElementById("3rdDegree");
-const fourthDegree = document.getElementById("4thDegree");
+const firstDegree = document.getElementById("1stDegree");
 const quadratic = document.getElementById("quadratic");
 const quadraticForm = document.getElementById("quadraticForm");
 const quadraticInput = document.getElementById("quadraticInput");
 const cubic = document.getElementById("cubic");
 const cubicForm = document.getElementById("cubicForm");
 const cubicInput = document.getElementById("cubicInput");
-const quartic = document.getElementById("quartic");
-const quarticForm = document.getElementById("quarticForm");
-const quarticInput = document.getElementById("quarticInput");
+const linear = document.getElementById("linear");
+const linearForm = document.getElementById("linearForm");
+const linearInput = document.getElementById("linearInput");
 const outputSum = document.getElementById("outputSum");
 const outputContanier = document.getElementById("outputContainer");
 const inputNumsLabel = document.getElementById("inputNumsLabel");
@@ -23,13 +23,35 @@ let coefficients = [];
 let total = 0;
 
 const degreeItems = [
+        {
+            a: document.getElementById("a1"),
+            b: document.getElementById("b1"),
+    
+            1 : firstDegree.onclick = () => {
+                polynomialArr.push(quadratic, cubic, quadraticForm, cubicForm);
+    
+                polynomialArr.forEach(listItem => {
+                    listItem.remove();
+                });
+                
+                polynomialContainer.append(linear, linearForm);
+                linear.classList.remove("hidden");
+                linearForm.classList.remove("hidden");
+                clearData(degreeItems[0], linearInput);
+            },
+    
+            2 : linearForm.onsubmit = () => {
+                arrayFilter(degreeItems[0], linearInput);
+                linearInput.value = "";
+            }
+        },
     {
-        a: document.getElementById("a"),
-        b: document.getElementById("b"),
-        c: document.getElementById("c"),
+        a: document.getElementById("a2"),
+        b: document.getElementById("b2"),
+        c: document.getElementById("c2"),
          
-        1 : secondDegree.onclick = () => {
-            polynomialArr.push(cubic, quartic, cubicForm, quarticForm);
+        3 : secondDegree.onclick = () => {
+            polynomialArr.push(cubic, linear, cubicForm, linearForm);
 
             polynomialArr.forEach(listItem => {
                 listItem.remove();
@@ -38,37 +60,12 @@ const degreeItems = [
             polynomialContainer.append(quadratic, quadraticForm);
             quadratic.classList.remove("hidden");
             quadraticForm.classList.remove("hidden");
-            clearData(degreeItems[0], quadraticInput);
+            clearData(degreeItems[1], quadraticInput);
         },
 
-        2 : quadraticForm.onsubmit = () => {
-            arrayFilter(degreeItems[0], quadraticInput);
+        4 : quadraticForm.onsubmit = () => {
+            arrayFilter(degreeItems[1], quadraticInput);
             quadraticInput.value = "";
-        }
-    },
-
-    {
-        a: document.getElementById("a2"),
-        b: document.getElementById("b2"),
-        c: document.getElementById("c2"),
-        d: document.getElementById("d2"),
-         
-        3 : thirdDegree.onclick = () => {
-            polynomialArr.push(quadratic, quartic, quadraticForm, quarticForm);
-
-            polynomialArr.forEach(listItem => {
-                listItem.remove();
-            });
-
-            polynomialContainer.append(cubic, cubicForm);
-            cubic.classList.remove("hidden");
-            cubicForm.classList.remove("hidden");
-            clearData(degreeItems[1], cubicInput);
-        },
-
-        4 : cubicForm.onsubmit = () => {
-            arrayFilter(degreeItems[1], cubicInput);
-            cubicInput.value = "";
         }
     },
 
@@ -77,24 +74,23 @@ const degreeItems = [
         b: document.getElementById("b3"),
         c: document.getElementById("c3"),
         d: document.getElementById("d3"),
-        e: document.getElementById("e3"),
-
-        4 : fourthDegree.onclick = () => {
-            polynomialArr.push(quadratic, cubic, quadraticForm, cubicForm);
+         
+        5 : thirdDegree.onclick = () => {
+            polynomialArr.push(quadratic, linear, quadraticForm, linearForm);
 
             polynomialArr.forEach(listItem => {
                 listItem.remove();
             });
-            
-            polynomialContainer.append(quartic, quarticForm);
-            quartic.classList.remove("hidden");
-            quarticForm.classList.remove("hidden");
-            clearData(degreeItems[2], quarticInput);
+
+            polynomialContainer.append(cubic, cubicForm);
+            cubic.classList.remove("hidden");
+            cubicForm.classList.remove("hidden");
+            clearData(degreeItems[2], cubicInput);
         },
 
-        5 : quarticForm.onsubmit = () => {
-            arrayFilter(degreeItems[2], quarticInput);
-            quarticInput.value = "";
+        6 : cubicForm.onsubmit = () => {
+            arrayFilter(degreeItems[2], cubicInput);
+            cubicInput.value = "";
         }
     }
 ];
@@ -104,8 +100,17 @@ function calculatePolynomial(item){
     outputContanier.classList.remove("hidden");
 
     inputs.length === 3 ? `${calculateQuadratic()}`
-    : inputs.length === 4 ? `${calculateCubic()}` : inputs.length === 5 ? 
-    `${calculateQuartic()}` : console.log("out of range");
+    : inputs.length === 4 ? `${calculateCubic()}` : inputs.length < 3 ? 
+    `${calculateLinear()}` : console.log("out of range");
+};
+
+function calculateLinear(){
+    const num1 = inputs[0];
+    const num2 = inputs[1];
+
+
+    const root = -num2 / num1;
+    outputSum.textContent = `x1 = ${root}`;
 };
 
 function calculateQuadratic(){
@@ -125,7 +130,7 @@ function calculateQuadratic(){
     }
     
     else {
-        console.log("no real roots");
+        outputSum.textContent = `no real roots`;
     }
 }
 
@@ -163,14 +168,10 @@ function calculateCubic(){
 
 }
 
-function calculateQuartic(){
-    
-};
-
 function arrayFilter(item, form) {
     const objectKeys = Object.keys(item);
     const splicedKeys = objectKeys.splice(0, 2);
-    coefficients.push(item.a, item.b, item.c);
+    coefficients.push(item.a, item.b);
     let nonDuplicateCoefficients = [...new Set(coefficients)];
     inputs.push(form.value);
     
@@ -178,12 +179,13 @@ function arrayFilter(item, form) {
         objectKeys[i] = inputs[i];
     };
     
-    if (objectKeys.length === 4){
-        nonDuplicateCoefficients.push(item.d);
+    if (objectKeys.length === 3){
+        nonDuplicateCoefficients.push(item.c);
     }
     
-    else if (objectKeys.length > 4){ 
-        nonDuplicateCoefficients.push(item.d, item.e);
+    else if (objectKeys.length > 3){ 
+        nonDuplicateCoefficients.push(item.c);
+        nonDuplicateCoefficients.push(item.d);
     };
 
     nonDuplicateCoefficients[total].textContent = inputs[total];
@@ -200,16 +202,13 @@ function clearData(objArrayItem, form){
     
     objArrayItem.a.textContent = "a";
     objArrayItem.b.textContent = "b";
-    objArrayItem.c.textContent = "c";
     total = 0;
 
-    if (Object.keys(objArrayItem).length === 6){
-        objArrayItem.d.textContent = "d";
+    if (Object.keys(objArrayItem).length === 5){
+        objArrayItem.c.textContent = "c";
     }
-    
-    else if (Object.keys(objArrayItem).length === 7){ 
+    else if (Object.keys(objArrayItem).length === 6){
         objArrayItem.d.textContent = "d";
-        objArrayItem.e.textContent = "e";
     }
 
     outputSum.textContent = "";
