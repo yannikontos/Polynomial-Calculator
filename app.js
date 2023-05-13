@@ -131,7 +131,7 @@ function calculateQuadratic(){
     else {
         outputSum.textContent = `no real roots`;
     }
-}
+};
 
 function calculateCubic(){
     const [a, b, c, d] = inputs;
@@ -162,7 +162,7 @@ function calculateCubic(){
         return `The cubic equation has one real root: ${alpha.toFixed(2)}`;
     }
 
-}
+};
 
 function arrayFilter(item, form) {
     const objectKeys = Object.keys(item);
