@@ -105,26 +105,25 @@ function calculatePolynomial(item){
 };
 
 function calculateLinear(){
-    const num1 = inputs[0];
-    const num2 = inputs[1];
+    const [a, b] = inputs;
 
-
-    const root = -num2 / num1;
+    const root = -b / a;
     outputSum.textContent = `x1 = ${root}`;
 };
 
 function calculateQuadratic(){
-    const discrim = Math.pow(inputs[1], 2) - 4 * inputs[0] * inputs[2];
+    const [a, b, c] = inputs;
+    const discrim = Math.pow(b, 2) - 4 * a * c;
 
     if (discrim >= 0){
-        const root1 = ((-inputs[1] + Math.sqrt(discrim)) / (2 * inputs[0])).toFixed(2);
-        const root2 = ((-inputs[1] - Math.sqrt(discrim)) / (2 * inputs[0])).toFixed(2);
+        const root1 = ((-b + Math.sqrt(discrim)) / (2 * a)).toFixed(2);
+        const root2 = ((-b - Math.sqrt(discrim)) / (2 * a)).toFixed(2);
         outputSum.textContent = `x1 = ${root1}, x2 = ${root2}`;
         return `${root1}, ${root2}`;
     }
     
     else if (discrim === 0){
-        const root = (-inputs[1] / (2 * inputs[0])).toFixed(2);
+        const root = (-b / (2 * a)).toFixed(2);
         outputSum.textContent = `${root}`;
         return `one root ${root}`;
     }
@@ -135,10 +134,7 @@ function calculateQuadratic(){
 }
 
 function calculateCubic(){
-    let a = inputs[0];
-    let b = inputs[1];
-    let c = inputs[2];
-    let d = inputs[3];
+    const [a, b, c, d] = inputs;
 
     if (a === 0){
         return "a cannot be zero";
